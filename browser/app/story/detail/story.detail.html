@@ -1,0 +1,30 @@
+<div class="container story-container">
+  <ul class="list-inline large-font">
+    <li>
+      <span
+        contenteditable="{{ $root.isMe(story.author) || $root.isAdmin() }}"
+        class="large-font"
+        ng-model="story.title"
+        ng-model-options="{debounce: 500}">
+      </span>
+    </li>
+    <li><span class="muted">by</span></li>
+    <li>
+      <select
+        ng-show="$root.isAdmin()"
+        ng-options="user.id as user.name for user in users"
+        ng-model="story.author_id"
+        ng-model-options="{debounce: 500}">
+      </select>
+      <a ng-hide="$root.isAdmin()" ui-sref="user({id: story.author_id})">{{ story.author.name }}</a>
+    </li>
+  </ul>
+  <br>
+  <p
+    contenteditable="{{ $root.isMe(story.author) || $root.isAdmin() }}"
+    ng-model="story.paragraphs"
+    ng-model-options="{debounce: 500}"
+    ng-list="<br><br>"
+    placeholder="(text here)">
+  </p>
+</div>

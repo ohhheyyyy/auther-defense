@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="user-query">
+    <user-item
+      is-form
+      model="userSearch"
+      class="list-group-item min-content"
+      glyphicon="search">
+    </user-item>
+    <user-item
+      ng-show="$root.isAdmin()"
+      is-form
+      model="userAdd"
+      class="list-group-item min-content"
+      glyphicon="plus"
+      icon-click="addUser()">
+    </user-item>
+  </div>
+  <br><br>
+  <div class="user-list">
+    <a
+      ng-repeat="user in users | filter:userSearch"
+      ui-sref="user({id: user.id})"
+      ui-sref-active="active"
+      class="list-group-item min-content"
+      ng-if="!user.isDestroyed">
+      <user-item model="user" after-remove="user.isDestroyed = true"></user-item>
+    </a>
+  </div>
+  <div class="fixed">
+    <ui-view></ui-view>
+  </div>
+</div>

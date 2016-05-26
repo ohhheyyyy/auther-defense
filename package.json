@@ -1,0 +1,31 @@
+{
+  "name": "auther",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "nodemon --watch server",
+    "preinstall": "bower install",
+    "seed": "node seed",
+    "db-init": "./db-init.sh",
+    "postinstall": "npm run db-init"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.0",
+    "passport-github": "^1.0.0",
+    "passport-google-oauth": "^0.2.0",
+    "passport-twitter": "^1.0.3",
+    "pg": "^4.5.5",
+    "sequelize": "^3.23.1"
+  },
+  "devDependencies": {
+    "chance": "^0.8.0",
+    "nodemon": "^1.7.1"
+  }
+}
